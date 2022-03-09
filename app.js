@@ -15,20 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
         counter++;
     })
 
-
     btn2.addEventListener('click', function () {
         newArr.forEach(die => die.roll())
     })
 
     btn3.addEventListener('click', function () {
-
         let sum = 0;
         newArr.forEach(total => sum += total.value)
-        console.log(sum)
         alert(`The Sum of all the Dice is ${sum}!`);
     })
 
-
+    // let answer = newArr.reduce((acc, val) => {
+    //             return acc + val;
+    //        })
+    // console.log(answer);
 
     class Die {
         constructor() {
@@ -40,10 +40,16 @@ document.addEventListener('DOMContentLoaded', function () {
             container.appendChild(this.div);
             this.div.innerText = this.value;
             this.roll();
+
             this.div.addEventListener('click', () => this.roll());
-            // this.div.addEventListener('dblclick', function () {
-            //     this.remove();
-            // }) 
+
+            this.div.addEventListener('dblclick', function () {
+                let rmv = newArr.indexOf(this);
+                newArr.splice(rmv)
+                this.remove();
+                console.log(newArr)
+
+            })
         }
 
         roll() {
@@ -61,9 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } if (this.value === 6) {
                 this.div.textContent = '\u2685'
             }
-            //this.div.textContent = this.value;
-
-        }
+        }    //this.div.textContent = this.value;
 
         addArr() {
             let reRollArr = this;
@@ -72,6 +76,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 })
+
+
 
 
 
