@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
     btn3.addEventListener('click', function () {
         let sum = 0;
         newArr.forEach(total => sum += total.value)
-        alert(`The Sum of all the Dice is ${sum}!`);
+        Swal.fire(`Dice sum = ${sum}!`);
     })
 
     // let answer = newArr.reduce((acc, val) => {
